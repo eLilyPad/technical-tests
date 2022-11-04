@@ -9,9 +9,10 @@ class Tile:
         10: ['Q','Z'],
     }
     
-    def points(letter):
+    def points(letter: str):
         for score, letters in Tile._points_charts.items():
-            if letter in letters:
+            lower = list(map(lambda l: l.lower(), letters))
+            if letter in lower:
                 return score 
             
         return 0 #TODO: Invalid Letter
@@ -24,9 +25,14 @@ class Word:
             if word == v_word:
                 return True 
         
-    def points():
-        pass
-    
+    def points(word: str):
+        total = 0
+        for letter in word:
+            # print(f'{letter} = {Tile.points(letter)}')
+            total += Tile.points(letter)
+            
+        return total
+              
 class Bag:
     
     _distribution = {
@@ -67,7 +73,12 @@ def user_input():
     pass
 
 def main():
-    print(Word.verify('alga'))
+#region tests
+    # print(Tile.points('b'))
+    # print(Word.verify('bob'))
+    print(Word.points('bob'))
+#endregion
+    pass
 
 if __name__ == '__main__':
     valid_words = get_dictionary()
