@@ -1,3 +1,4 @@
+from itertools import permutations
 import random
 
 
@@ -50,7 +51,11 @@ class Bag:
     }
     
     def give_tiles(amount = 7):
-        pass
+        tiles = []
+        for i in range(amount):
+            tiles.append(Bag._get_letter())
+            
+        return tiles
         
     def _get_letter():
         chance = list(Bag._distribution.keys())
@@ -64,8 +69,16 @@ class Bag:
         # for chance, letters in Bag._distribution.items():
     
 class Player:
-    def longest_word():
-        pass
+    def longest_word(letters: list):
+        for i in range(len(letters),0, -1):
+            print ("Checking against words of length %d" % i)
+            pool = permutations(letters, i) 
+            for comb in pool:
+                word = ''.join(comb)
+                if Word.verify(word):
+                    return word
+                
+        return ''
 
     def best_word():
         pass
@@ -91,7 +104,9 @@ def main():
     # print(Tile.points('b'))
     # print(Word.verify('bob'))
     # print(Word.points('bob'))
-    print(Bag._get_letter())
+    # print(Bag.give_tiles(5))
+    print(Player.longest_word(Bag.give_tiles(5)))
+    
 #endregion
     pass
 
