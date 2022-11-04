@@ -18,8 +18,11 @@ class Tile:
 
 class Word:
     
-    def verify(word):
-        return True if 
+    def verify(word:str):
+        word = word.lower()
+        for v_word in valid_words:
+            if word == v_word:
+                return True 
         
     def points():
         pass
@@ -60,14 +63,12 @@ def get_dictionary():
     
     return dictionary
         
-        
-
 def user_input():
     pass
 
-
 def main():
-    get_dictionary()
+    print(Word.verify('alga'))
 
 if __name__ == '__main__':
+    valid_words = get_dictionary()
     main()
