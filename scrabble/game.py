@@ -35,7 +35,6 @@ class Word:
         total = 0
         word = word.lower()
         for letter in word:
-            # print(f'{letter} = {Tile.points(letter)}')
             total += Tile.points(letter)
             
         return total
@@ -96,7 +95,7 @@ class Player:
                     score = Word.points(word)
                     print (f'Valid: {word} score = {score}')
                     if score > best_score:
-                        return word # not returning best score just jisrt verified word
+                        return word #TODO: not returning best score just first verified word
                 
         return ''
 
