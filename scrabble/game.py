@@ -18,9 +18,8 @@ class Tile:
 
 class Word:
     
-    
-    def verify():
-        pass
+    def verify(word):
+        return True if 
         
     def points():
         pass
@@ -52,14 +51,23 @@ class Player:
         pass
 
 def get_dictionary():
-    pass
+    path = '/Users/elizabeth/Documents/Projects/SigmaLabs/technical-tests/scrabble/dictionary.txt'
+    dictionary = []
+    with open(path) as file:
+        dict_str = file.read()
+        dictionary = dict_str.splitlines()
+        # print(dictionary)
+    
+    return dictionary
+        
+        
 
 def user_input():
     pass
 
 
 def main():
-    pass
+    get_dictionary()
 
 if __name__ == '__main__':
     main()
