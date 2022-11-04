@@ -1,3 +1,6 @@
+import random
+
+
 class Tile:
     _points_charts = {
         1: ['E', 'A', 'I', 'O', 'N', 'R', 'T', 'L', 'S', 'U'],
@@ -46,8 +49,19 @@ class Bag:
         2: ['K','J','X','Q','Z'],
     }
     
-    def give_tiles():
+    def give_tiles(amount = 7):
         pass
+        
+    def _get_letter():
+        chance = list(Bag._distribution.keys())
+        all_letters = list(Bag._distribution.values())
+        letters = random.choices(all_letters, chance, k=1) [0]
+        
+        if len(letters) == 1:
+            return letters[0]
+        else:
+            return random.choice(letters)
+        # for chance, letters in Bag._distribution.items():
     
 class Player:
     def longest_word():
@@ -76,7 +90,8 @@ def main():
 #region tests
     # print(Tile.points('b'))
     # print(Word.verify('bob'))
-    print(Word.points('bob'))
+    # print(Word.points('bob'))
+    print(Bag._get_letter())
 #endregion
     pass
 
