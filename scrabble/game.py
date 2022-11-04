@@ -65,9 +65,11 @@ class Bag:
         all_letters = list(Bag._distribution.values())
         letters = random.choices(all_letters, chance, k=1) [0]
         
+        ## not needed
         if len(letters) == 1:
             return letters[0]
         else:
+        ##
             return random.choice(letters)
         # for chance, letters in Bag._distribution.items():
     
@@ -94,7 +96,7 @@ class Player:
                     score = Word.points(word)
                     print (f'Valid: {word} score = {score}')
                     if score > best_score:
-                        return word
+                        return word # not returning best score just jisrt verified word
                 
         return ''
 
