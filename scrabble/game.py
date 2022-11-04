@@ -1,3 +1,5 @@
+
+from rich.prompt import Prompt
 from itertools import permutations
 import random
 
@@ -122,7 +124,15 @@ def get_dictionary():
     return dictionary
         
 def user_input():
-    pass
+    input = Prompt.ask('Enter A word:')
+    
+    is_valid = Word.verify(input)
+    while not is_valid:
+        print('Invalid word')
+        input = Prompt.ask('Enter A word:')
+        is_valid = Word.verify(input)
+        
+    return input
 
 def main():
 #region tests
@@ -130,8 +140,12 @@ def main():
     # print(Word.verify('bob'))
     # print(Word.points('TEE'))
     # print(Bag.give_tiles(5))
-    print(Player.best_word(Bag.give_tiles(5)))
-    
+    # print(Player.best_word(Bag.give_tiles(5)))
+    available_tiles = Bag.give_tiles(7)
+    print(available_tiles)
+    word = user_input()
+    print(f'You scored {Word.points(word)}')
+    print(f'The best score was {Player.best_word(available_tiles)}')
 #endregion
     pass
 
