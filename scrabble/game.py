@@ -31,6 +31,7 @@ class Word:
         
     def points(word: str):
         total = 0
+        word = word.lower()
         for letter in word:
             # print(f'{letter} = {Tile.points(letter)}')
             total += Tile.points(letter)
@@ -80,11 +81,35 @@ class Player:
                 
         return ''
 
-    def best_word():
-        pass
+    def best_word(letters: list):
+        best_score = 0
+        for i in range(len(letters),0, -1):
+            print ("Checking against words of length %d" % i)
+            pool = permutations(letters, i) 
+            for comb in pool:
+                word = ''.join(comb)
+                if Word.verify(word):
+                    score = Word.points(word)
+                    print (f'Valid: {word} score = {score}')
+                    if score > best_score:
+                        return word
+                
+        return ''
 
-    def best_triple_word():
-        pass
+    # def best_triple_word(letters: lists):
+    #     best_score = 0
+    #     for i in range(len(letters),0, -1):
+    #         print ("Checking against words of length %d" % i)
+    #         pool = permutations(letters, i) 
+    #         for comb in pool:
+    #             word = ''.join(comb)
+    #             if Word.verify(word):
+    #                 score = Word.points(word)
+    #                 print (f'Valid: {word} score = {score}')
+    #                 if score > best_score:
+    #                     return word
+                
+    #     return ''
 
 def get_dictionary():
     path = '/Users/elizabeth/Documents/Projects/SigmaLabs/technical-tests/scrabble/dictionary.txt'
@@ -103,9 +128,9 @@ def main():
 #region tests
     # print(Tile.points('b'))
     # print(Word.verify('bob'))
-    # print(Word.points('bob'))
+    # print(Word.points('TEE'))
     # print(Bag.give_tiles(5))
-    print(Player.longest_word(Bag.give_tiles(5)))
+    print(Player.best_word(Bag.give_tiles(5)))
     
 #endregion
     pass
