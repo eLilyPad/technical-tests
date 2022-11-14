@@ -25,7 +25,7 @@ class Tile:
 
 class Word:
     
-    def verify(word:str):
+    def verify(word: str):
         word = word.lower()
         for v_word in valid_words:
             if word == v_word:
@@ -40,7 +40,7 @@ class Word:
         return total
               
 class Bag:
-    
+    """the chance for a letter to be generated given as a percentage"""
     _distribution = {
         27: ['E'],
         20: ['A','I'],
@@ -55,11 +55,11 @@ class Bag:
     def give_tiles(amount = 7):
         tiles = []
         for i in range(amount):
-            tiles.append(Bag._get_letter())
+            tiles.append(Bag._get_tile())
             
         return tiles
         
-    def _get_letter():
+    def _get_tile():
         chance = list(Bag._distribution.keys())
         all_letters = list(Bag._distribution.values())
         letters = random.choices(all_letters, chance, k=1) [0]
@@ -115,6 +115,7 @@ class Player:
     #     return ''
 
 def get_dictionary():
+    # TODO: change to relative path
     path = '/Users/elizabeth/Documents/Projects/SigmaLabs/technical-tests/scrabble/dictionary.txt'
     dictionary = []
     with open(path) as file:
