@@ -2245,5 +2245,7 @@ input = '''
 '''
 
 arr = input.split('\n\n')
-
+for a in arr:
+	a = a.split('\n')
+	
 print(arr)
