@@ -2247,9 +2247,11 @@ input = '''
 num_arr = []
 arr = input.split('\n\n')
 for a in arr:
+	held_cals = a.split('\n')
 	tot = 0
-	tot = tot + [ i for i in a.split('\n')]
-	num_arr += [cal_per_elf]
+	for c in held_cals:
+		tot += int(c)
+	num_arr += tot
 
 
 print(num_arr)
