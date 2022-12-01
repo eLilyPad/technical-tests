@@ -2250,8 +2250,9 @@ for a in arr:
 	held_cals = a.split('\n')
 	tot = 0
 	for c in held_cals:
-		tot += int(c)
-	num_arr += tot
+		if c != '':
+			tot += int(c)
+	num_arr += [tot]
 
 
 print(num_arr)
