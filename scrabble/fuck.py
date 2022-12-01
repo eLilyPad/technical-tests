@@ -2244,8 +2244,9 @@ input = '''
 6253
 '''
 
+num_arr = []
 arr = input.split('\n\n')
 for a in arr:
-	a = a.split('\n')
-	
-print(arr)
+	num_arr += [a.split('\n')]
+
+print(num_arr)
