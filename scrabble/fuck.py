@@ -2247,7 +2247,8 @@ input = '''
 num_arr = []
 arr = input.split('\n\n')
 for a in arr:
-	cal_per_elf += [i in a.split('\n')]
+	tot = 0
+	tot = tot + [ i for i in a.split('\n')]
 	num_arr += [cal_per_elf]
 
 
